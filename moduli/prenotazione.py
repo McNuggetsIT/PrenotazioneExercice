@@ -81,24 +81,28 @@ class Prenotazione():
         print(f"Numero persone: {self.__numero_persone}")
 
 
-    # ------------------ SALVATAGGIO SU FILE ------------------
-
-    # Salva una prenotazione in fondo al file (modalità 'a' = append)
     def salva_su_file(self):
-        # apro prenotazione.txt in modalità append
-        # così aggiungo nuove prenotazioni senza cancellare le vecchie
-        with open("prenotazione.txt", "a") as file:
 
-            # Scrivo tutti i dati dell'utente e della prenotazione in formato CSV
-            file.write(
-                f"{self.__utente.get_nome()},"
-                f"{self.__utente.get_cognome()},"
-                f"{self.__utente.get_cellulare()},"
-                f"{';'.join(self.__utente.get_allergie())},"
-                f"{self.__data},"
-                f"{self.__ora},"
-                f"{self.__numero_persone}\n"
-            )
+    # Apro (o creo) il file prenotazione.txt in modalità "a"
+    # "a" significa "append": aggiungi nuove righe senza cancellare quelle già presenti.
+     with open("prenotazione.txt", "a") as file:
+
+        # Scrivo una riga contenente:
+        # - il cellulare dell'utente (che funge da identificatore univoco)
+        # - la data della prenotazione
+        # - l'ora della prenotazione
+        # - il numero di persone
+        #
+        # I campi sono separati da virgole per ottenere un formato simile al CSV.
+        # Il carattere "\n" alla fine serve per andare a capo e iniziare una nuova riga.
+        file.write(
+            f"{self.__utente.get_cellulare()},"
+            f"{self.__data},"
+            f"{self.__ora},"
+            f"{self.__numero_persone}\n"
+        )
+
+
 
     # ------------------ LETTURA PRENOTAZIONI ------------------
 
