@@ -1,6 +1,6 @@
-from moduli.utente import Utente  
+from utente import Utente  
 
-class Prenotazione():
+class Prenotazione:
     def __init__(self, utente, data="", ora="", numero_persone=0):
         # L'oggetto utente viene passato già creato (composizione, non ereditarietà)
         # È privato così la prenotazione può accedere all'utente solo tramite get/set
@@ -10,7 +10,6 @@ class Prenotazione():
         self.__data = data        
         self.__ora = ora             
         self.__numero_persone = numero_persone 
-        
 
     # ------------------------- GETTER -------------------------
 
@@ -26,7 +25,6 @@ class Prenotazione():
     def get_numero_persone(self):
         return self.__numero_persone
 
-
     # ------------------------- SETTER -------------------------
 
     # Modifica la data della prenotazione
@@ -40,7 +38,6 @@ class Prenotazione():
     # Modifica il numero di persone della prenotazione
     def set_numero_persone(self, numero):
         self.__numero_persone = numero
-  
 
     # ------------------ CREAZIONE PRENOTAZIONE ------------------
 
@@ -76,56 +73,53 @@ class Prenotazione():
     # Mostra la prenotazione leggendo i dati dall'utente associato
     def visualizza_prenotazione(self):
         print(f"Prenotazione di {self.__utente.get_nome()} {self.__utente.get_cognome()}:")
-        print(f"Data: {self.__data}")
-        print(f"Ora: {self.__ora}")
-        print(f"Numero persone: {self.__numero_persone}")
+        print(f"Data: {self.get_data()}")
+        print(f"Ora: {self.get_ora()}")
+        print(f"Numero persone: {self.get_numero_persone()}")
+        print(f"Numero Cellulare: {self.__utente.get_cellulare()}")
 
+    # ------------------ SALVATAGGIO SU FILE ------------------
 
     def salva_su_file(self):
+        # Apro (o creo) il file prenotazione.txt in modalità "a"
+        # "a" significa "append": aggiungi nuove righe senza cancellare quelle già presenti.
+        with open("moduli/prenotazione.txt", "a", encoding="utf-8") as file:
 
-    # Apro (o creo) il file prenotazione.txt in modalità "a"
-    # "a" significa "append": aggiungi nuove righe senza cancellare quelle già presenti.
-     with open("prenotazione.txt", "a") as file:
-
-        # Scrivo una riga contenente:
-        # - il cellulare dell'utente (che funge da identificatore univoco)
-        # - la data della prenotazione
-        # - l'ora della prenotazione
-        # - il numero di persone
-        #
-        # I campi sono separati da virgole per ottenere un formato simile al CSV.
-        # Il carattere "\n" alla fine serve per andare a capo e iniziare una nuova riga.
-        file.write(
-            f"{self.__utente.get_cellulare()},"
-            f"{self.__data},"
-            f"{self.__ora},"
-            f"{self.__numero_persone}\n"
-        )
-
-
+            # Scrivo una riga contenente:
+            # - il cellulare dell'utente (che funge da identificatore univoco)
+            # - la data della prenotazione
+            # - l'ora della prenotazione
+            # - il numero di persone
+            #
+            # I campi sono separati da virgole per ottenere un formato simile al CSV.
+            # Il carattere "\n" alla fine serve per andare a capo e iniziare una nuova riga.
+            file.write(
+                f"{self.__utente.get_cellulare()},"
+                f"{self.__data},"
+                f"{self.__ora},"
+                f"{self.__numero_persone}\n"
+            )
 
     # ------------------ LETTURA PRENOTAZIONI ------------------
 
     # Legge e mostra tutte le prenotazioni presenti nel file
     def leggi_prenotazioni(self):
         # Apre il file in sola lettura
-        file = open("prenotazione.txt", "r")
+        with open("moduli/prenotazione.txt", "r", encoding="utf-8") as file:
 
-        # Cicla ogni riga del file
-        for line in file:
+            # Cicla ogni riga del file
+            for line in file:
 
-            # Rimuove eventuali spazi o newline finali e separa i campi tramite virgola
-            dati = line.strip().split(",")
+                # Rimuove eventuali spazi o newline finali e separa i campi tramite virgola
+                dati = line.strip().split(",")
 
-            # Assegna ogni campo ad una variabile
-            cellulare, data , ora, numero_persone = dati
+                # Controllo di sicurezza: la riga deve avere esattamente 4 campi
+                if len(dati) == 4:
+                    cellulare, data, ora, numero_persone = dati
 
-            # Stampa una prenotazione formattata
-            print(
-                f"Cell: {cellulare} - "
-                f"Data: {data} - "
-                f"Ora: {ora} - Persone: {numero_persone}"
-            )
-
-        # Chiudo il file al termine
-        file.close()
+                    # Stampa una prenotazione formattata
+                    print(
+                        f"Cell: {cellulare} - "
+                        f"Data: {data} - "
+                        f"Ora: {ora} - Persone: {numero_persone}"
+                    )
