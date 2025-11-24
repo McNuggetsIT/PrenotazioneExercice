@@ -1,5 +1,17 @@
 # PrenotazioneExercice
 
+
+Questo progetto è un semplice gestionale scritto in Python che permette di gestire **utenti** e **prenotazioni** utilizzando file di testo.  
+Il programma offre un menu testuale attraverso il quale è possibile:
+
+- Registrare nuovi utenti con i loro dati personali (nome, cognome, cellulare, allergie).
+- Visualizzare, modificare o rimuovere utenti già presenti.
+- Creare nuove prenotazioni collegate agli utenti registrati.
+- Visualizzare e modificare le prenotazioni salvate.
+- Evitare duplicati: un utente non può avere più di una prenotazione attiva.
+
+Il sistema non utilizza database, ma salva tutte le informazioni in file `.txt` (`utente.txt` e `prenotazione.txt`), rendendo il progetto leggero e facilmente eseguibile da terminale.
+
 ## Utente.py
 Definisce la classe `Utente` con attributi privati (nome, cognome, cellulare, allergie).  
 Funzioni principali:
