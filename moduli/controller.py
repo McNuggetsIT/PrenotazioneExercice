@@ -1,10 +1,3 @@
-<<<<<<< Updated upstream
-import moduli.utente as utenti
-import moduli.prenotazione as prenotazioni
-
-
-
-=======
 from moduli.utente import Utente
 from moduli.prenotazione import Prenotazione
 
@@ -39,4 +32,4 @@ def check_crea_prenotazione(utente, data, ora, numero_persone):
         nuova = Prenotazione(utente, data, ora, numero_persone)
         nuova.salva_su_file()
         print("Prenotazione creata con successo.")
->>>>>>> Stashed changes
+
