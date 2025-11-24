@@ -33,10 +33,5 @@ Funzioni principali:
 - `leggi_prenotazioni_da_file()`: legge le prenotazioni da file.
 - `check_crea_prenotazione()`: controlla duplicati e crea prenotazioni.
 - `menu()`: interfaccia testuale con opzioni:
-  1. Aggiungi utente  
-  2. Visualizza utenti  
-  3. Aggiungi prenotazione  
-  4. Visualizza prenotazioni  
-  5. Esci
 
 **Autore: Giuseppe D’Avanzo**
