@@ -1,7 +1,6 @@
 # PrenotazioneExercice
 
 Anna F, Giuseppe D, Gianamarco S
-
 Sorrentino Gianmarco: Crezione di una classe base chiamata Utente , che racchiude degli attributi privati , come nome , cognome , cellulare e allergie.
 Ho definito i metodi get e set per ogni attributo, e varo metodi come crea_utente , visualizza_utente , modifica_utente , rimuovi_utente.
 
