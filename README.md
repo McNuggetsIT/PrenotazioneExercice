@@ -6,7 +6,7 @@ Funzioni principali:
 - `crea_utente()`: crea un nuovo utente e lo salva su file.
 - `visualizza_utente()`: mostra i dati dell’utente.
 - `modifica_utente()`: aggiorna i dati.
-- `rimuovi_utente()`: elimina i dati (solo in memoria).
+- `rimuovi_utente()`: elimina i dati.
 - `salva_su_file()`: scrive i dati in `utente.txt`.
 
 **Autore: Gianmarco Sorrentino**
