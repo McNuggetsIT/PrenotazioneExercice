@@ -118,12 +118,12 @@ class Prenotazione():
             dati = line.strip().split(",")
 
             # Assegna ogni campo ad una variabile
-            nome, cognome, cellulare, allergie, data, ora, numero_persone = dati
+            cellulare, data , ora, numero_persone = dati
 
             # Stampa una prenotazione formattata
             print(
-                f"{nome} {cognome} - Cell: {cellulare} - "
-                f"Allergie: {allergie} - Data: {data} - "
+                f"Cell: {cellulare} - "
+                f"Data: {data} - "
                 f"Ora: {ora} - Persone: {numero_persone}"
             )
 
